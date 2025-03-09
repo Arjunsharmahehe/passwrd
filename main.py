@@ -84,6 +84,7 @@ class PasswordManager:
     def list_sites(self):
         if not self.passwords:
             print(Fore.YELLOW + "\nThere is no record\n" + Fore.WHITE)
+        print()
         for i in self.passwords.keys():
             print(i)
 
@@ -91,6 +92,7 @@ class PasswordManager:
         if application not in self.passwords:
             print(Fore.YELLOW + f"\nNo passwords saved for {application}\n") + Fore.WHITE
             return
+        print()
         for i in self.passwords[application]:
             print(i["username"])
 
