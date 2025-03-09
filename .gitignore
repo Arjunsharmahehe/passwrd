@@ -1,2 +1,5 @@
 passwords.json
 .venv/
+passwrd.spec
+dist/
+build/
