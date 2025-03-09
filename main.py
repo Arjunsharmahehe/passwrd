@@ -1,11 +1,14 @@
 import json
 import os
 import hashlib
+import base64
+from cryptography.fernet import Fernet
+
 DATA_FILE = 'passwords.json'
 
 class PasswordManager:
     def __init__(self, seed):
-        self.key = hashlib.sha256(seed.encode()).digest()
+        self.key = base64.urlsafe_b64encode(hashlib.sha256(seed.encode()).digest()).decode()
         self.passwords = self.load_password()
 
     def load_password(self):
