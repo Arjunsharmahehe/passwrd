@@ -40,7 +40,7 @@ class PasswordManager:
 
         with open(DATA_FILE, 'w') as f:
             json.dump(self.passwords, f, indent=4)
-            print(Fore.GREEN + "\nPASSWORD STORED SUCCESSFULLY!!\n" + Fore.WHITE)
+            print(Fore.GREEN + "\n[+]PASSWORD STORED SUCCESSFULLY!!\n" + Fore.WHITE)
         return
     
     def get_password(self, application, user):
@@ -67,7 +67,7 @@ class PasswordManager:
         for index in range(len(self.passwords[application])):
             if self.passwords[application][index]["username"] == user:
                 self.passwords[application][index]["password"] = self.encrypt(newpassword)
-                print(Fore.GREEN + "\nPassword updated successfully!!\n" + Fore.WHITE)
+                print(Fore.GREEN + "\n[+]Password updated successfully!!\n" + Fore.WHITE)
                 break
         else:
             print(Fore.YELLOW + f"\nNo password for {user} has been saved in {application}\n" + Fore.WHITE)
@@ -149,7 +149,7 @@ if __name__ == "__main__" and getattr(sys, 'frozen', False):
     parser.add_argument("--site", help="Website name")
     parser.add_argument("--user", help="Account name")
     parser.add_argument("--password", help="Password (required for adding)")
-    parser.add_argument("--seed", required=True, help="Seed for encryption")
+    parser.add_argument("--seed", required=True, help="Seed for encryption, once a record is added using this seed, it can be retreived using the same seed only")
 
     args = parser.parse_args()
     manager = PasswordManager(args.seed)
