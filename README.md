@@ -26,7 +26,7 @@ python3 main.py init --seed myseed
 ```
 Or use command-line arguments for quick actions:
 ```sh
-python main.py add --site example.com --user myemail@example.com --password mysecurepassword --seed myseed
+python3 main.py add --site example.com --user myemail@example.com --password mysecurepassword --seed myseed
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ python main.py add --site example.com --user myemail@example.com --password myse
 ### Interactive Mode
 Run the script and enter your encryption seed:
 ```sh
-python main.py init --seed myseed
+python3 main.py init --seed myseed
 ```
 Follow the on-screen menu options to add, retrieve, update, or list passwords.
 
@@ -42,27 +42,27 @@ Follow the on-screen menu options to add, retrieve, update, or list passwords.
 
 #### Add a Password
 ```sh
-python main.py add --site example.com --user myemail@example.com --password mysecurepassword --seed myseed
+python3 main.py add --site example.com --user myemail@example.com --password mysecurepassword --seed myseed
 ```
 
 #### Retrieve a Password
 ```sh
-python main.py get --site example.com --user myemail@example.com --seed myseed
+python3 main.py get --site example.com --user myemail@example.com --seed myseed
 ```
 
 #### List Stored Websites
 ```sh
-python main.py list --seed myseed
+python3 main.py list --seed myseed
 ```
 
 #### List Users for a Website
 ```sh
-python main.py list-user --site example.com --seed myseed
+python3 main.py list-user --site example.com --seed myseed
 ```
 
 #### Start Interactive Mode
 ```sh
-python main.py init --seed myseed
+python3 main.py init --seed myseed
 ```
 
 ## Creating an Executable
