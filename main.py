@@ -10,10 +10,11 @@ from cryptography.fernet import Fernet
 import pyperclip as clip
 from colorama import Fore
 
+# File that stores all the passwords
 DATA_FILE = 'passwords.json'
 
 class PasswordManager:
-    def __init__(self, seed):
+    def __init__(self, seed: str):
         self.key = base64.urlsafe_b64encode(hashlib.sha256(seed.encode()).digest()).decode()
         self.fernet = Fernet(self.key)
         self.passwords = self.load_password()
@@ -24,15 +25,18 @@ class PasswordManager:
                 return json.load(f)
         return {}
     
-    def add_password(self, application, user, password):
+    def add_password(self, application: str, user: str, password: str):
+        # initialises the entry if it doesn't exist
         if application not in self.passwords:
             self.passwords[application] = []
 
+        # checks if the entry already exists
         for i in self.passwords[application]:
             if i["username"] == user:
                 print(Fore.RED + "\nUSER PASSWORD ALREADY EXISTS\n" + Fore.WHITE)
                 return
 
+        # creating an object to append to the users array
         d = {}
         d["username"] = user
         d["password"] = self.encrypt(password)
@@ -44,6 +48,7 @@ class PasswordManager:
         return
     
     def get_password(self, application, user):
+        # An error can occur if the seed is incorrect
         try:
             if application not in self.passwords:
                 print(Fore.REd + f"\nNo password for {application} is saved\n" + Fore.WHITE)
